@@ -33,13 +33,10 @@ Siswa Indonesia sering harus buka banyak aplikasi berbeda cuma untuk belajar: sa
 **Bonus:** rumus matematika (`$\int u\,dv$`, dsb.) dirender otomatis jadi notasi matematika sungguhan lewat KaTeX — bukan teks mentah.
 
 ## 🖼️ Cuplikan Aplikasi
-
-> *Tambahkan screenshot kamu di sini, misalnya:*
-> ```md
-> ![Tanya Jawab](docs/screenshot-chat.png)
-> ![Kuis Latihan](docs/screenshot-quiz.png)
-> ```
-
+![[1.png|388]]
+![[2.png|394]]
+![[3.png|398]]
+![[4.png|398]]
 ## 🛠️ Tech Stack
 
 - **Model AI**: Gemma 4 (`gemma-4-31b-it`) via Gemini API
