@@ -31,12 +31,6 @@ Siswa Indonesia sering harus buka banyak aplikasi berbeda cuma untuk belajar: sa
 | ❓ | **Kuis Latihan** | Soal otomatis sesuai topik, **kunci jawaban tersembunyi** sampai diklik 🔒 |
 
 **Bonus:** rumus matematika (`$\int u\,dv$`, dsb.) dirender otomatis jadi notasi matematika sungguhan lewat KaTeX — bukan teks mentah.
-
-## 🖼️ Cuplikan Aplikasi
-![[1.png|388]]
-![[2.png|394]]
-![[3.png|398]]
-![[4.png|398]]
 ## 🛠️ Tech Stack
 
 - **Model AI**: Gemma 4 (`gemma-4-31b-it`) via Gemini API
