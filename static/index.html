@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Asisten Belajar — Gemma AI</title>
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+</head>
+<body>
+
+<div class="app-shell">
+
+  <header class="topbar">
+    <div class="badge" aria-hidden="true">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 12 L20 6 L34 12 L20 18 Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M12 15.5 V26 C12 26 15 29 20 29 C25 29 28 26 28 26 V15.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M34 12 V21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="title-block">
+      <h1>Asisten Belajar<svg class="title-flourish" viewBox="0 0 220 14" aria-hidden="true"><path d="M2 8 Q 28 2, 55 7 T 108 6 T 162 8 T 218 5" /></svg></h1>
+      <p>Teman belajar kamu, kapan saja — ditenagai Gemma AI</p>
+    </div>
+    <div class="model-tag">gemma-4-31b-it</div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <span class="tab-indicator" aria-hidden="true"></span>
+    <button class="tab-btn active" data-tab="chat" role="tab" aria-selected="true">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5.5C4 4.7 4.7 4 5.5 4h13c.8 0 1.5.7 1.5 1.5v9c0 .8-.7 1.5-1.5 1.5H10l-4.5 4v-4H5.5C4.7 16 4 15.3 4 14.5v-9Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      Tanya Jawab
+    </button>
+    <button class="tab-btn" data-tab="summarize" role="tab" aria-selected="false">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3.5h9l4 4V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8.5 12h7M8.5 15.5h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      Ringkas Materi
+    </button>
+    <button class="tab-btn" data-tab="plan" role="tab" aria-selected="false">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="1.3" stroke="currentColor" stroke-width="1.7"/><path d="M4 9.5h16M8 3.5v4M16 3.5v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      Rencana Belajar
+    </button>
+    <button class="tab-btn" data-tab="quiz" role="tab" aria-selected="false">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 9c0-2 1.6-3.3 3.4-3.3S15.6 7 15.6 8.7c0 2-2.6 2.3-2.6 4.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12.5" cy="17.3" r="1.1" fill="currentColor"/></svg>
+      Kuis Latihan
+    </button>
+  </nav>
+
+  <main class="page-card">
+
+    <!-- TAB 1: TANYA JAWAB -->
+    <section id="tab-chat" class="tab-panel active">
+      <h2>Tanya apa saja tentang pelajaranmu</h2>
+      <div id="chat-log" class="chat-log">
+        <div class="chat-empty">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5.5C4 4.7 4.7 4 5.5 4h13c.8 0 1.5.7 1.5 1.5v9c0 .8-.7 1.5-1.5 1.5H10l-4.5 4v-4H5.5C4.7 16 4 15.3 4 14.5v-9Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          Tulis pertanyaanmu di bawah — aku siap bantu jelaskan.
+        </div>
+      </div>
+      <form id="chat-form" class="input-row">
+        <input
+          id="chat-input"
+          type="text"
+          placeholder="Contoh: Jelaskan apa itu rekursi di Python..."
+          autocomplete="off"
+          required
+        />
+        <button type="submit" class="send-btn" aria-label="Kirim">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V6M12 6l-6 6M12 6l6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
+    </section>
+
+    <!-- TAB 2: RINGKAS MATERI -->
+    <section id="tab-summarize" class="tab-panel">
+      <h2>Ringkas catatan atau materi panjang</h2>
+      <textarea
+        id="summarize-input"
+        rows="8"
+        placeholder="Tempel catatan, artikel, atau materi kuliah kamu di sini..."
+      ></textarea>
+
+      <div class="field-row">
+        <label for="summarize-length">Panjang ringkasan</label>
+        <select id="summarize-length">
+          <option>Singkat</option>
+          <option selected>Sedang</option>
+          <option>Detail</option>
+        </select>
+      </div>
+
+      <button id="summarize-btn" class="primary-btn">Ringkas Sekarang</button>
+      <div id="summarize-result" class="result-box"><span class="placeholder-text">Ringkasan akan muncul di sini setelah kamu klik tombol di atas.</span></div>
+    </section>
+
+    <!-- TAB 3: RENCANA BELAJAR -->
+    <section id="tab-plan" class="tab-panel">
+      <h2>Buat rencana belajar personal</h2>
+
+      <div class="field-row">
+        <label for="plan-topic">Topik / mata pelajaran</label>
+        <input id="plan-topic" type="text" placeholder="Contoh: Kalkulus dasar" />
+      </div>
+
+      <div class="field-grid">
+        <div class="field-row">
+          <label for="plan-days">Jumlah hari belajar</label>
+          <input id="plan-days" type="number" min="1" max="30" value="7" />
+        </div>
+        <div class="field-row">
+          <label for="plan-hours">Jam belajar per hari</label>
+          <input id="plan-hours" type="number" min="1" max="8" value="2" />
+        </div>
+        <div class="field-row">
+          <label for="plan-level">Level saat ini</label>
+          <select id="plan-level">
+            <option>Pemula</option>
+            <option>Menengah</option>
+            <option>Lanjutan</option>
+          </select>
+        </div>
+      </div>
+
+      <button id="plan-btn" class="primary-btn">Buatkan Rencana Belajar</button>
+      <div id="plan-result" class="result-box"><span class="placeholder-text">Rencana belajar akan muncul di sini setelah kamu klik tombol di atas.</span></div>
+    </section>
+
+    <!-- TAB 4: KUIS LATIHAN -->
+    <section id="tab-quiz" class="tab-panel">
+      <h2>Buat kuis latihan otomatis</h2>
+
+      <div class="field-row">
+        <label for="quiz-topic">Topik untuk kuis</label>
+        <input id="quiz-topic" type="text" placeholder="Contoh: Sistem Pencernaan Manusia" />
+      </div>
+
+      <div class="field-grid">
+        <div class="field-row">
+          <label for="quiz-count">Jumlah soal</label>
+          <input id="quiz-count" type="number" min="3" max="10" value="5" />
+        </div>
+        <div class="field-row">
+          <label for="quiz-type">Tipe soal</label>
+          <select id="quiz-type">
+            <option>Pilihan Ganda</option>
+            <option>Isian Singkat</option>
+            <option>Campuran</option>
+          </select>
+        </div>
+      </div>
+
+      <button id="quiz-btn" class="primary-btn">Buat Kuis</button>
+      <div id="quiz-result" class="result-box"><span class="placeholder-text">Soal latihan akan muncul di sini setelah kamu klik tombol di atas.</span></div>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    Build with Gemma AI Hackathon 2026 · Tema Pendidikan — Asisten Belajar
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
