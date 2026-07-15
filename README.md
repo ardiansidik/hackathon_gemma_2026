@@ -89,6 +89,6 @@ Buka **http://localhost:8000** — satu perintah ini langsung menjalankan backen
 
 <div align="center">
 
-Dibuat dengan 🖤 untuk **Build with Gemma AI Hackathon 2026**
+Dibuat dengan untuk **Build with Gemma AI Hackathon 2026**
 
 </div>
